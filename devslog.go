@@ -194,7 +194,9 @@ func (h *developHandler) processAttributes(buf []byte, r *slog.Record) []byte {
 	}
 
 	buf = h.colorize(buf, attrs, 0, []string{})
-	buf = append(buf, '\n')
+	if buf[len(buf)-1] != '\n' {
+		buf = append(buf, '\n')
+	}
 	return buf
 }
 
